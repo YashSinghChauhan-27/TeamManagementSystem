@@ -50,14 +50,12 @@ const connectDB = async () => {
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
-  // Serve the static files from the build folder (React build)
-  app.use(express.static(path.join(__dirname, '../build')));
-  
-  // Send the index.html for all routes to handle React routing
+  app.use(express.static(path.join(__dirname, '../dist')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
   });
 }
+
 
 console.log('About to start server...');
 // Start server

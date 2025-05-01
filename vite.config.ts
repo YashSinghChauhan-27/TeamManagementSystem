@@ -11,7 +11,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../build', // Must match what your Express server serves
+    outDir: '../dist', // Must match what your Express server serves
     emptyOutDir: true,
   },
   server: {
