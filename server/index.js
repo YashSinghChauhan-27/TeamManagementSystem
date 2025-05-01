@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'production') {
   
   // Send the index.html for all routes to handle React routing
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
   });
 }
 
