@@ -55,12 +55,22 @@ if (process.env.NODE_ENV === 'production') {
   
   // Send the index.html for all routes to handle React routing
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
   });
 }
 
+console.log('About to start server...');
 // Start server
-app.listen(PORT, async () => {
-  await connectDB();
-  console.log(`Server running on port ${PORT}`);
-});
+const startServer = async () => {
+  try {
+    await connectDB();
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('🔥 Failed to start server:', err);
+  }
+};
+
+startServer();
+
